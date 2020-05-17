@@ -1,0 +1,65 @@
+﻿@model CartoonsWebApp.Cartoons
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>@ViewBag.cartoonName</h1>
+
+<div>
+    <h4>Cartoons</h4>
+    <hr />
+    <dl class="row">
+        @*<dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>*@
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.FilmStudios)
+
+        </dt>
+        <dd class="col-sm-10">
+            @Html.ActionLink(Model.FilmStudios.Name, "Details", "FilmStudios", new { id = Model.FilmStudios.Id, name = Model.FilmStudios.Name })
+        </dd>
+        @*<dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FilmStudios.Name)
+        </dd>*@
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.CartoonAwards)
+        </dt>
+        <dd class="col-sm-12">
+
+            @foreach (var auth in ViewData["AwardsName"] as List<Awards>)
+            {
+
+                @Html.ActionLink(@auth.Name, "Details", "Awards", new { id = auth.Id, name = auth.Name })
+                <a> </a>
+            }
+        </dd>
+        <dd class="col-sm-10">
+            @ViewData["CartoonAwardYear"]
+        </dd>
+
+
+        @*<dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.CartoonAwards)
+        </dt>*@
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

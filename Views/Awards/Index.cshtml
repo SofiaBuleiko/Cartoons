@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CartoonsWebApp.Awards>
+
+@{
+    ViewData["Title"] = "Awards";
+}
+
+<h1>Нагороди</h1>
+@if (User.IsInRole("admin"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+
+    <div>
+        <h3>Оберіть exel-файл для заватаження</h3>
+        @using (Html.BeginForm("Import", "Awards", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm-excel" }))
+        {
+            <div>
+                <input class="knopka_all" type="file" name="fileExcel" id="fileExcel" />
+                <input class="knopka_all" style="margin-left:0%;" type="submit" value="Завантажити" />
+            </div>
+        }
+    </div>}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        @Html.ActionLink("List cartoons", "Details", "Awards", new { id = item.Id, name = item.Name }) |
+                        @*@Html.ActionLink("Cartoons", "Index", "CartoonAwards", new { id = item.Id, name = item.Name }) |*@
+
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

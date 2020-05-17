@@ -1,0 +1,21 @@
+﻿@*@{
+        ViewData["Title"] = "Лабораторна робота з ІСтаТП 2020. Мультфільми";
+    }
+
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>@User.Identity.Name</p>
+
+        <form method="post" asp-controller="Account" asp-action="Logout">
+            <input type="submit" value="Вихід" />
+        </form>
+    }
+    else
+    {
+        <a asp-controller="Account" asp-action="Login">Вхід</a>
+        <a asp-controller="Account" asp-action="Register">Реєстація</a>
+    }*@
+@{
+        ViewData["Title"] = "Лабораторна робота з ІСтаТП 2020. Мультфільми";
+    }

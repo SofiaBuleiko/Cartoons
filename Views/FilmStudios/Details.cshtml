@@ -1,0 +1,58 @@
+﻿@model CartoonsWebApp.FilmStudios
+
+@{
+    ViewData["Title"] = "Details";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewBag.filmStudiosName</h1>
+
+<div>
+    <h4>FilmStudios</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.Cartoons)
+        </dt>
+        <dd class="col-sm-12">
+            @foreach (var auth in ViewData["cartoonName"] as List<Cartoons>)
+            {
+
+                @Html.ActionLink(@auth.Name, "Details", "Cartoons", new { id = auth.Id, name = auth.Name })
+                <a> </a>
+            }
+        </dd>
+       
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cartoons)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.Cartoons)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+                    <a asp-action="Index">Back to List</a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>*@

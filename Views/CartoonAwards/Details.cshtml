@@ -1,0 +1,48 @@
+﻿@model CartoonsWebApp.CartoonAwards
+
+@{
+    ViewData["Title"] = "Details";
+}
+  
+<h1>Details</h1>
+
+<div>
+    <h4>CartoonAwards</h4>
+    <hr />
+    <dl class="row">
+        
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Cartoons)
+            </dt>
+            <dd class="col-sm-10">
+                @foreach (var auth in ViewData["CartoonsName"] as List<Cartoons>)
+                {
+
+                    @Html.ActionLink(@auth.Name, "Index", "CartoonAwards", new { id = auth.Id, name = auth.Name })
+                    <a> </a>
+                }
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Year)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Year)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Awards)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Awards.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Cartoons)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Cartoons.Name)
+            </dd>
+        </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
